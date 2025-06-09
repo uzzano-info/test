@@ -21,9 +21,14 @@ def main() -> None:
         default="LangChain 시작을 도와줘",
         help="Question to ask the model",
     )
+    parser.add_argument(
+        "--model",
+        default="GPT-4.1 mini",
+        help="OpenAI model name",
+    )
     args = parser.parse_args()
 
-    llm = ChatOpenAI()
+    llm = ChatOpenAI(model=args.model)
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", "You are a helpful assistant."),
